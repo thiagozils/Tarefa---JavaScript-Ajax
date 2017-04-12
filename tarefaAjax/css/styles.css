@@ -1,0 +1,59 @@
+ *{
+box-sizing:border-box;
+padding : 0;
+margin:0;	 
+ }
+
+
+body{
+font-family: "Comic Sans MS", "Comic Sans", cursive;
+width : 100%
+	}
+
+
+.divComida { 
+padding-left : 4%;
+padding-right : 4%;
+padding-bottom : 4%;
+background-color: #ccc;
+text-align:justify;
+    height: auto;
+}
+
+.divFora{
+    margin-bottom: 2%;
+    
+}
+
+section div { 
+width: auto;
+}
+section a{
+    font-family: 'Roboto', sans-serif;
+    color: #8B4513;
+    display: block;
+}
+section a:hover{
+    text-decoration: none;
+    color:#B8860B;
+}
+
+h1 { 
+color: #000000;
+font-size:220%;
+
+}
+
+
+h3 {
+padding-top : 2%;
+color: #000000;
+}
+
+.navbar-default .navbar-brand {
+    color: #000000;
+	font-size:220%;
+}
+
+
+
