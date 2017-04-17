@@ -1,5 +1,6 @@
-var dataUrl = "data.json",
-    itensHtml = "item-snippet.html";
+var dataUrl = "dados/menu.json",
+    itensHtml = "js/menu.html";
+	itensHtml2 = "js/item.html";
     
 // função facilitadora para inserir HTML em um elemento
 function insereHtml(seletor, html) {
@@ -24,26 +25,41 @@ function inserePropriedade(template, propName, propValue) {
 
 // constroi a pagina, com os dados recebidos por parametro
 function constroiPagina(dados) {
-  var htmlFinal = '<section class="row">'; // string que vai conter todo o HTML
+  var htmlFinal = ''; // string que vai conter todo o HTML
+  var htmlFinal2 = '';
   // construimos os itens agora
   $ajaxUtils.sendGetRequest(itensHtml, function(itensHtml) {
     for (var i = 0, max = dados.length; i < max; i++) {
       var html = itensHtml,
-          nome = dados[i].name.first + " " + dados[i].name.last,
-          empresa = dados[i].company,
-          email = dados[i].email,
-          fone = dados[i].phone;
+          titulo = dados[i].titulo ;
           
-      html = inserePropriedade(html, "nome", nome);
-      html = inserePropriedade(html, "empresa", empresa);
-      html = inserePropriedade(html, "email", email);
-      html = inserePropriedade(html, "fone", fone);
-      
+      html = inserePropriedade(html, "titulo", titulo);      
       htmlFinal += html;
     }
-    htmlFinal += '</section>';
-    insereHtml("#content", htmlFinal);
+    insereHtml("ul", htmlFinal);
   }, false); // não é um JSON
+    
+    
+      $ajaxUtils.sendGetRequest(itensHtml2, function(itensHtml2) {
+    for (var i = 0, max = dados.length; i < max; i++) {
+      var html = itensHtml2,
+          titulo = dados[i].titulo,
+          conteudo = dados[i].conteudo;
+          
+      html = inserePropriedade(html, "titulo", titulo); 
+      html = inserePropriedade(html, "conteudo", conteudo);  
+      htmlFinal2 += html;
+    }
+    insereHtml(".row", htmlFinal2);
+  }, false); // não é um JSON
+    
+    
+    
+    
+    
+    
+    
+    
 }
 // vamos construir o sendGetRequest:
 // definir a URL (dataUrl)
